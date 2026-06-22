@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+  <article>
+    <h2>{{ post.title }}</h2>
+    
+    {% if post.views > 1000 %}
+      <div style="background-color: #f39c12; color: white; display: inline-block; padding: 3px 8px; border-radius: 4px; font-weight: bold; margin-bottom: 15px;">
+        🔥 Популярное ({{ post.views }} просмотров)
+      </div>
+    {% else %}
+      <p style="color: #7f8c8d; font-size: 0.9em;">Просмотры: {{ post.views }}</p>
+    {% endif %}
+
+    <div class="post-content" style="font-size: 1.1em; margin: 20px 0; line-height: 1.6;">
+      <p>{{ post.content }}</p>
+    </div>
+  </article>
+  
+  <hr style="border: 0; border-top: 1px dashed #ccc; margin-top: 30px;">
+  <p><a href="{{ url_for('posts_list') }}">← Назад к списку статей</a></p>
+{% endblock %}

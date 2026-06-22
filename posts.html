@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>Список новостей</h2>
+  <table border="1" cellpadding="8" style="border-collapse: collapse;">
+    <thead>
+      <tr>
+        <th>Заголовок</th>
+        <th>Просмотры</th>
+        <th>Статус</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in news %}
+      <tr>
+        <td>{{ item.title }}</td>
+        <td>{{ item.views }}</td>
+        <td>
+          {% if item.views > 1000 %}
+            <span style="color: #e67e22; font-weight: bold;">🔥 Популярное</span>
+          {% else %}
+            —
+          {% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <br>
+  <p><a href="{{ url_for('news_home') }}">← Назад на главную новостей</a></p>
+{% endblock %}

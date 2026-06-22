@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>Привет, {{ user.username }}!</h2>
+  <h3>Задание 1. Список студентов (данные из SQLite)</h3>
+  
+  <table class="students-table" border="1">
+    <thead>
+      <tr>
+        <th>Имя студента</th>
+        <th>Возраст</th>
+        <th>Оценка</th>
+        <th>Статус</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for student in students %}
+      <tr>
+        <td>{{ student.name }}</td>
+        <td>{{ student.age }}</td>
+        <td>{{ student.grade }}</td>
+        <td>
+          {% if student.grade >= 4 %}
+            <span style="color: green; font-weight: bold;">Сдал</span>
+          {% else %}
+            <span style="color: red; font-weight: bold;">Не сдал</span>
+          {% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

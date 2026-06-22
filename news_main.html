@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>{{ site_name }}</h1>
+        <nav>
+            <a href="{{ url_for('index') }}">Студенты (БД)</a> | 
+            <a href="{{ url_for('products') }}">Товары</a> | 
+            <a href="{{ url_for('news_home') }}">Главная новостей</a> | 
+            <a href="{{ url_for('news_list') }}">Список новостей</a> | 
+            <a href="{{ url_for('posts_list') }}">Блог (БД)</a> | 
+            <a href="{{ url_for('repos_list') }}">Репозитории</a>
+        </nav>
+    </header>
+    <hr>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <hr>
+    <footer>
+        <p>&copy; {{ year }} {{ site_name }}</p>
+        <p style="color: #7f8c8d; font-size: 0.85em; font-style: italic; margin-top: 5px;">
+            Разработчик: Очековский Вячеслав
+        </p>
+    </footer>
+</body>
+</html>
